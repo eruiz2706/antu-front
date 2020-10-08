@@ -1,0 +1,94 @@
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Detail</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body p-0">
+        <table class="table m-0 p-0">
+          <tbody>
+            <tr>
+              <td><strong>Code</strong></td>
+              <td>{{country.code}}</td>
+            </tr>
+            <tr>
+              <td><strong>Name</strong></td>
+              <td>{{country.name}}</td>
+            </tr>
+            <tr>
+              <td><strong>Capital City</strong></td>
+              <td>{{country.capital_city}}</td>
+            </tr>
+            <tr>
+              <td><strong>Phone Code</strong></td>
+              <td>{{country.phone_code}}</td>
+            </tr>
+            <tr>
+              <td><strong>Continent Code</strong></td>
+              <td>{{country.continent_code}}</td>
+            </tr>
+            <tr>
+              <td><strong>Currency Code</strong></td>
+              <td>{{country.currency_code}}</td>
+            </tr>
+            <tr>
+              <td><strong>Flag</strong></td>
+              <td>
+                <img src="{{country.flag}}" alt="Flag" width="50" height="30">
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Languajes</strong></td>
+              <td>
+                <p *ngFor="let languaje of country.languaje">
+                  {{languaje.sName}} ({{languaje.sISOCode}})
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand mr-auto mr-lg-0" href="#">Countries</a>
+  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<main role="main" class="container mt-4" style="padding-top:60px;">
+  
+  <div class="my-3 p-3 bg-white rounded shadow-sm" >
+    <h6 class="border-bottom border-gray pb-2 mb-0">
+      List Countries  
+      <button type="button" class="btn btn-sm btn-outline-primary"  (click)="reload()">
+        Reload
+      </button>
+    </h6>
+    
+    <div class="media text-muted pt-3" *ngFor="let country of countries">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">{{ country.code }}</strong>
+        {{ country.name }}
+      </p>
+      <button type="button" class="btn btn-sm btn-outline-info" (click)="detail(country.code)">Detail</button>
+    </div>
+  </div>
+</main>
